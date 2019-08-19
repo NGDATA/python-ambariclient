@@ -1,3 +1,13 @@
+
+
+We no longer need to have our fork of python-ambariclient.
+Changes done in this branch have been merged along with the ticket 
+https://github.com/jimbobhickville/python-ambariclient/pull/34
+
+We can start using 0.6.0
+
+
+
 Python bindings to the Apache Ambari API
 ==================================================
 
