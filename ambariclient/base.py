@@ -141,6 +141,9 @@ class ModelCollection(object):
     def __call__(self, *args):
         raise NotImplementedError("'__call__' must be defined by subclasses")
 
+    def __next__(self):
+        return self.next()
+
     def inflate(self):
         raise NotImplementedError("'inflate' must be defined by subclasses")
 
@@ -216,7 +219,7 @@ class QueryableModelCollection(ModelCollection):
         self._models = []
         if kwargs:
             prefix = self.model_class.data_key
-            for (key, value) in kwargs.iteritems():
+            for (key, value) in kwargs.items():
                 if self.model_class.use_key_prefix:
                     key = '/'.join([prefix, key])
                 if not isinstance(value, six.string_types):

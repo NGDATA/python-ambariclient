@@ -713,7 +713,7 @@ class ClusterService(Service):
         """Stops this service."""
         self.load(self.client.put(self.url, data={
             "RequestInfo": {
-                "context": "_PARSE_.START.%s" % self.service_name,
+                "context": "_PARSE_.STOP.%s" % self.service_name,
                 "operation_level": {
                     "level": "SERVICE",
                     "cluster_name": self.cluster_name,
@@ -1038,6 +1038,9 @@ class StackConfiguration(base.QueryableModel):
         model = self._properties[self._iter_marker]
         self._iter_marker += 1
         return model
+
+    def __next__(self):
+        return self.next()
 
     def load(self, response):
         self._properties = []
